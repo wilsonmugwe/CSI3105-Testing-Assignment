@@ -11,13 +11,13 @@ The purpose of this project is to apply software testing techniques to evaluate 
 
 The project uses two main testing strategies:
 
-### Black-Box Testing (Person A)
+### Black-Box Testing
 - Equivalence Partitioning (EP)
 - Boundary Value Analysis (BVA)
 - Weak-robust test case design
 - Focus on input validation and known defects
 
-### Structural Testing (Person B)
+### Structural Testing
 - Control Flow Graphs (CFG)
 - Branch coverage testing
 - Focus on internal program logic
@@ -25,7 +25,6 @@ The project uses two main testing strategies:
 ---
 
 ## Project Structure
-
 
 CSI3105-Testing-Assignment/
 │
@@ -44,28 +43,25 @@ CSI3105-Testing-Assignment/
 ├── requirements.txt
 └── README.md
 
-
 ---
 
 ## Responsibilities
 
-### Person A (Wilson)
-- Design Equivalence Partitioning (EP) test cases
-- Design Boundary Value Analysis (BVA) test cases
-- Implement pytest tests for input validation
+- Design Equivalence Partitioning (EP) test cases  
+- Design Boundary Value Analysis (BVA) test cases  
+- Implement pytest tests for input validation  
 - Test known faults:
   - Feb 29 (leap year issue)
   - 30 November issue
   - 11:00–11:59 PM time issue
   - Invalid dates (e.g. day 32)
   - Case sensitivity issues
-- Produce defect report
+- Produce defect report  
 
-### Person B (Chilufya)
-- Create Control Flow Graphs (CFG)
-- Design branch coverage test cases
-- Implement structural pytest tests
-- Document test plan and execution
+- Create Control Flow Graphs (CFG)  
+- Design branch coverage test cases  
+- Implement structural pytest tests  
+- Document test plan and execution  
 
 ---
 
@@ -73,26 +69,20 @@ CSI3105-Testing-Assignment/
 
 ### 1. Clone the Repository
 
-
-git clone https://github.com/wilsonmugwe/CSI3105-Testing-Assignment.git
+git clone https://github.com/wilsonmugwe/CSI3105-Testing-Assignment.git  
 cd CSI3105-Testing-Assignment
-
 
 ---
 
 ### 2. Install Dependencies
 
-
 python -m pip install pytest
-
 
 ---
 
 ### 3. Run Test Cases
 
-
 python -m pytest
-
 
 All test files are located in the `tests/` directory.
 
@@ -100,12 +90,10 @@ All test files are located in the `tests/` directory.
 
 ## Test Results
 
-- Test results will appear in the terminal after running pytest
+- Test results will appear in the terminal after running pytest  
 - Screenshots of test execution should be saved in:
 
-
 test_outputs/
-
 
 ---
 
@@ -113,20 +101,20 @@ test_outputs/
 
 The following known defects are tested in this project:
 
-- Leap year issue (Feb 29 not handled correctly)
-- Invalid dates accepted (e.g. day 32)
-- 30 November booking issue
-- 11 PM booking time issue
-- Case sensitivity issues for room and person names
-- Ambiguous error messages
+- Leap year issue (Feb 29 not handled correctly)  
+- Invalid dates accepted (e.g. day 32)  
+- 30 November booking issue  
+- 11 PM booking time issue  
+- Case sensitivity issues for room and person names  
+- Ambiguous error messages  
 
 ---
 
 ## Notes
 
-- Some tests may fail intentionally to demonstrate existing defects
-- Failed tests are valid if they highlight real system issues
-- All identified defects are documented in the report
+- Some tests may fail intentionally to demonstrate existing defects  
+- Failed tests are valid if they highlight real system issues  
+- All identified defects are documented in the report  
 
 ---
 
@@ -134,18 +122,18 @@ The following known defects are tested in this project:
 
 The final submission includes:
 
-- Testing report (in docs/)
-- Complete project folder (this repository)
-- pytest test files
-- Screenshots of test execution
-- Meeting minutes
-- Peer review form
+- Testing report (in docs/)  
+- Complete project folder (this repository)  
+- pytest test files  
+- Screenshots of test execution  
+- Meeting minutes  
+- Peer review form  
 
 ---
 
 ## Tools Used
 
-- Python 3
-- pytest
-- Visual Studio Code / PyCharm
-- GitHub
+- Python 3  
+- pytest  
+- Visual Studio Code / PyCharm  
+- GitHub  
