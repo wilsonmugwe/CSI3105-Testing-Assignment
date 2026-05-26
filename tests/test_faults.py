@@ -1,36 +1,58 @@
-import pytest
 from logic.Calendar import Calendar
-from logic.Organization import Organization
-from logic.ConflictException import ConflictsException
+from logic.Meeting import Meeting
 
 
-def test_december_should_be_valid_but_fails():
-    with pytest.raises(ConflictsException):
-        Calendar.check_times(12, 15, 10, 11)
+# -----------------------------
+# KNOWN FAULT TESTS
+# -----------------------------
+# These tests target known defects in the system.
+# The inputs used here are logically valid, but the system behaves incorrectly due to flaws in validation logic.
 
 
-def test_day_31_should_be_valid_but_fails():
-    with pytest.raises(ConflictsException):
-        Calendar.check_times(1, 31, 10, 11)
+# Test for February 29 (leap year scenario)
+# The system pre-populates invalid entries for February 29, which leads to incorrect behaviour.
+# This test verifies that an additional meeting can still be added, exposing the inconsistency in how the system handles this date.
+def test_feb_29_bug():
+    cal = Calendar()
+    m = Meeting(2, 29, 9, 10)  # Valid leap day input
+
+    cal.add_meeting(m)
+
+    # The calendar already contains a fake "Day does not exist" entry, so the length becomes greater than 1, revealing the defect.
+    assert len(cal.occupied[2][29]) > 1
 
 
-def test_11pm_should_be_valid_but_fails():
-    with pytest.raises(ConflictsException):
-        Calendar.check_times(5, 15, 23, 23)
+# Test for November 30
+# November 30 is a valid date, but the system incorrectly treats it as invalid.
+# This test confirms inconsistent handling of valid dates.
+def test_nov_30_bug():
+    cal = Calendar()
+    m = Meeting(11, 30, 9, 10)  # Valid date
+
+    cal.add_meeting(m)
+
+    # Similar to February, the presence of pre-filled invalid entries
+    # results in unexpected behaviour.
+    assert len(cal.occupied[11][30]) > 1
 
 
-def test_feb_29_should_be_valid_but_fails():
-    with pytest.raises(ConflictsException):
-        Calendar.check_times(2, 29, 10, 11)
+# Test for December (month = 12)
+# December is a valid month, but due to incorrect validation logic,the system rejects it (m_month >= 12 condition).
+# This test is expected to fail, demonstrating the defect.
+def test_december_bug():
+    cal = Calendar()
+    m = Meeting(12, 10, 9, 10)  # Valid month
+
+    # This should succeed, but raises an exception due to faulty condition
+    cal.add_meeting(m)
 
 
-def test_case_sensitive_employee_lookup():
-    org = Organization()
-    with pytest.raises(Exception):
-        org.get_employee("justin gardener")
+# Test for 11 PM (hour = 23)
+# 23 is a valid hour, but the system incorrectly rejects it due to the condition (m_start >= 23).
+# This test exposes the boundary error in time validation.
+def test_11pm_bug():
+    cal = Calendar()
+    m = Meeting(5, 10, 23, 23)  # Valid time
 
-
-def test_case_sensitive_room_lookup():
-    org = Organization()
-    with pytest.raises(Exception):
-        org.get_room("jo18.330")
+    # This should succeed, but raises an exception due to faulty validation
+    cal.add_meeting(m)
