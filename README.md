@@ -43,8 +43,6 @@ CSI3105-Testing-Assignment/
 ├── requirements.txt
 └── README.md
 
----
-
 ## Responsibilities
 
 - Design Equivalence Partitioning (EP) test cases  
