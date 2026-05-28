@@ -25,7 +25,7 @@ The project uses two main testing strategies:
 ---
 
 ## Project Structure
-
+```
 CSI3105-Testing-Assignment/
 │
 ├── src/ # System source code
@@ -42,7 +42,7 @@ CSI3105-Testing-Assignment/
 ├── test_outputs/ # Screenshots of pytest results
 ├── requirements.txt
 └── README.md
-
+```
 ## Responsibilities
 
 - Design Equivalence Partitioning (EP) test cases  
